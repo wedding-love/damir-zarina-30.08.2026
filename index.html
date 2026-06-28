@@ -355,7 +355,7 @@
             visibility: hidden;
         }
 
-        /* БОЛЬШОЕ СЕРДЕЧКО ВОКРУГ ЦИФРЫ 30 */
+        /* ОГРОМНОЕ СЕРДЕЧКО ВОКРУГ ЦИФРЫ 30 */
         .special-day {
             position: relative;
             display: flex;
@@ -368,8 +368,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 72px;
-            height: 72px;
+            width: 85px;
+            height: 85px;
             pointer-events: none;
             z-index: 0;
         }
@@ -756,13 +756,14 @@
             opacity: 1;
         }
 
+        /* ФИНАЛЬНОЕ ФОТО — анимация снизу вверх при появлении */
         .final-photo-wrapper {
             max-width: 450px;
             margin: 0 auto;
             padding: 0 10px;
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1.2s cubic-bezier(0.25, 0.8, 0.4, 1), transform 1.2s cubic-bezier(0.25, 0.8, 0.4, 1);
+            transform: translateY(50px);
+            transition: opacity 1.4s cubic-bezier(0.25, 0.8, 0.4, 1), transform 1.4s cubic-bezier(0.25, 0.8, 0.4, 1);
         }
 
         .final-block.visible .final-photo-wrapper {
@@ -1044,8 +1045,8 @@
             .delicate-ampersand { font-size: 3.5rem; margin-top: -3px; margin-bottom: -3px; }
             .final-names .name-item { font-size: 36px; }
             .heart-svg {
-                width: 60px;
-                height: 60px;
+                width: 70px;
+                height: 70px;
             }
         }
         @media (max-width: 580px) {
@@ -1054,8 +1055,8 @@
             .delicate-ampersand { font-size: 2.8rem; margin-top: -2px; margin-bottom: -2px; }
             .final-names .name-item { font-size: 30px; }
             .heart-svg {
-                width: 52px;
-                height: 52px;
+                width: 60px;
+                height: 60px;
             }
         }
         @media (max-width: 480px) {
@@ -1065,8 +1066,8 @@
             .contact-row { flex-direction: column; align-items: center; gap: 6px; }
             .final-names .name-item { font-size: 26px; }
             .heart-svg {
-                width: 46px;
-                height: 46px;
+                width: 52px;
+                height: 52px;
             }
         }
     </style>
@@ -1160,7 +1161,7 @@
     <div class="dresscode-screen" id="dresscodeScreen">
         <div class="dresscode-container">
             <h1 class="dresscode-main-title" id="dresscodeMainTitle">Дресс-код</h1>
-            <p class="dresscode-description" id="dresscodeDescription">Строгого дресс-кода нет! Мы не ограничиваем вас в выборе нарядов. Будем рады видеть вас в любом образе, который вам по душе. Главное — ваше настроение и желание разделить с нами этот день!</p>
+            <p class="dresscode-description" id="dresscodeDescription">Мы не ограничиваем вас в выборе нарядов. Будем рады видеть вас в любом образе, который вам по душе. Главное — ваше настроение и желание разделить с нами этот день!</p>
             <p class="dresscode-note" id="dresscodeNote">В белом только невеста!</p>
         </div>
     </div>
@@ -1320,7 +1321,6 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             dressScreen.classList.add('visible');
-                            // Элементы внутри появляются с задержкой
                             setTimeout(() => {
                                 document.getElementById('dresscodeMainTitle')?.classList.add('visible');
                             }, 200);
