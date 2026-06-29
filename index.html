@@ -667,17 +667,12 @@
             transform: translateY(0);
         }
 
+        /* ОТДЕЛЬНЫЙ БЛОК "ПОЖЕЛАНИЯ" */
         .wishes-block {
             max-width: 450px;
             margin: 0 auto 40px auto;
             padding: 0 20px;
             text-align: center;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            font-weight: 300;
-            line-height: 1.7;
-            color: #555;
-            letter-spacing: 0.3px;
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 1.2s cubic-bezier(0.25, 0.8, 0.4, 1), transform 1.2s cubic-bezier(0.25, 0.8, 0.4, 1);
@@ -685,6 +680,25 @@
         .wishes-block.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .wishes-title {
+            font-family: 'Lighthaus', 'Quicksand', sans-serif;
+            font-weight: 400;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #121212;
+            margin-bottom: 20px;
+        }
+
+        .wishes-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.7;
+            color: #555;
+            letter-spacing: 0.3px;
         }
 
         .divider-line {
@@ -1184,12 +1198,14 @@
         <div class="dresscode-container">
             <h1 class="dresscode-main-title" id="dresscodeMainTitle">Дресс-код</h1>
             <p class="dresscode-description" id="dresscodeDescription">Мы не ограничиваем вас в выборе нарядов. Будем рады видеть вас в любом образе, который вам по душе. Главное — ваше настроение и желание разделить с нами этот день!</p>
-            <p class="dresscode-note" id="dresscodeNote">Белый цвет мы оставим для невесты, но будем рады любым другим светлым и нежным оттенкам.</p>
+            <p class="dresscode-note" id="dresscodeNote">Пусть белый останется лишь в моём платье, а вы выбирайте те оттенки, в которых чувствуете себя особенно красиво и уютно.</p>
         </div>
     </div>
 
+    <!-- ОТДЕЛЬНЫЙ БЛОК "ПОЖЕЛАНИЯ" -->
     <div class="wishes-block" id="wishesBlock">
-        <p>Пожалуйста, оставьте ваших малышей в надёжных руках на вечер нашего торжества, так как формат свадьбы не предполагает детской зоны и аниматоров.</p>
+        <h2 class="wishes-title">Пожелания</h2>
+        <p class="wishes-text">Пожалуйста, оставьте ваших малышей в надёжных руках на вечер нашего торжества, так как формат свадьбы не предполагает детской зоны и аниматоров.</p>
     </div>
 
     <div class="divider-line"></div>
@@ -1264,7 +1280,6 @@
 
     <script>
         (function() {
-            // Анимации для всех блоков
             const firstObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1414,7 +1429,6 @@
                 document.getElementById('secondScreen')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
 
-            // Логика отправки формы на Formspree
             const form = document.getElementById('guestForm');
             const messageDiv = document.getElementById('formMessage');
 
