@@ -50,7 +50,6 @@
             background-color: #ffffff;
         }
 
-        /* ----- ПЕРВЫЙ ЭКРАН (ФИКСИРОВАННЫЙ) ----- */
         .first-screen {
             position: relative;
             width: 100%;
@@ -202,7 +201,6 @@
         .scroll-down:hover { background: white; transform: translateX(-50%) scale(1.02); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
         .arrow-icon-svg { margin-left: 8px; width: 11px; height: 11px; stroke: #1a1a1a; }
 
-        /* ----- ВТОРОЙ ЭКРАН ----- */
         .second-screen {
             width: 100%;
             background: #fff;
@@ -355,7 +353,6 @@
             visibility: hidden;
         }
 
-        /* ТОНКАЯ ОБВОДКА СЕРДЕЧКА ВОКРУГ ЦИФРЫ 30 */
         .special-day {
             position: relative;
             display: flex;
@@ -416,7 +413,6 @@
             transform: translateY(0);
         }
 
-        /* ----- ЛОКАЦИЯ ----- */
         .location-section {
             position: relative;
             max-width: 450px;
@@ -527,7 +523,6 @@
         .location-section.visible .venue-name { opacity: 1; transform: translateY(0); }
         .location-section.visible .btn-maps { opacity: 1; transform: translateY(0); }
 
-        /* ----- ТАЙМИНГ ----- */
         .timeline-screen {
             background: #fff;
             padding: 50px 20px 60px;
@@ -598,10 +593,9 @@
             margin: 0 auto;
         }
 
-        /* ----- ДРЕСС-КОД (анимация снизу вверх) ----- */
         .dresscode-screen {
             background: #fff;
-            padding: 40px 16px 60px;
+            padding: 40px 16px 30px;
             opacity: 0;
             transform: translateY(60px);
             transition: opacity 0.9s cubic-bezier(0.25, 0.8, 0.4, 1), transform 0.9s cubic-bezier(0.25, 0.8, 0.4, 1);
@@ -645,7 +639,7 @@
             line-height: 1.7;
             color: #555;
             max-width: 360px;
-            margin: 0 auto 30px;
+            margin: 0 auto 20px;
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 2s cubic-bezier(0.25, 0.8, 0.4, 1), transform 2s cubic-bezier(0.25, 0.8, 0.4, 1);
@@ -673,7 +667,34 @@
             transform: translateY(0);
         }
 
-        /* ----- ФИНАЛЬНЫЙ БЛОК (анимация снизу вверх) ----- */
+        .wishes-block {
+            max-width: 450px;
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.7;
+            color: #555;
+            letter-spacing: 0.3px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.25, 0.8, 0.4, 1), transform 1.2s cubic-bezier(0.25, 0.8, 0.4, 1);
+        }
+        .wishes-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .divider-line {
+            width: 1px;
+            height: 60px;
+            background: #1a1a1a;
+            margin: 0 auto;
+            opacity: 0.4;
+        }
+
         .final-block {
             background: #fff;
             padding: 40px 20px 60px;
@@ -757,7 +778,6 @@
             opacity: 1;
         }
 
-        /* ФИНАЛЬНОЕ ФОТО — анимация снизу вверх при появлении */
         .final-photo-wrapper {
             max-width: 450px;
             margin: 0 auto;
@@ -781,7 +801,6 @@
             background-color: #f5f0eb;
         }
 
-        /* ----- RSVP ----- */
         .rsvp-screen {
             background: #ffffff;
             padding: 60px 20px;
@@ -924,16 +943,24 @@
             transition: background 0.2s;
         }
         .submit-btn:hover { background: #333; }
-        .hidden-message {
+
+        .success-message {
             text-align: center;
             margin-top: 20px;
+            padding: 15px;
+            background: #f5f5f5;
             font-family: 'Montserrat', sans-serif;
-            font-size: 12px;
+            font-size: 13px;
             color: #1a1a1a;
             display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .success-message.show {
+            display: block;
+            opacity: 1;
         }
 
-        /* ----- КОНТАКТЫ (ТОЛЬКО НЕВЕСТА) ----- */
         .contacts-screen {
             background: #ffffff;
             padding: 60px 20px 80px;
@@ -1039,7 +1066,6 @@
             text-transform: uppercase;
         }
 
-        /* ----- АДАПТИВНОСТЬ ----- */
         @media (max-width: 768px) {
             .name-line { font-size: 2.8rem; }
             .zarina-name { margin-left: 50px; }
@@ -1075,7 +1101,6 @@
 </head>
 <body>
 
-    <!-- ПЕРВЫЙ ЭКРАН (ФИКСИРОВАННЫЙ) -->
     <div class="first-screen" id="firstScreen">
         <div class="photo-bg" id="photoBg">
             <div class="photo-container" id="photoContainer"></div>
@@ -1094,7 +1119,6 @@
         </div>
     </div>
 
-    <!-- ВТОРОЙ ЭКРАН -->
     <div class="second-screen" id="secondScreen">
         <div class="invitation-container">
             <h1 class="title">ДОРОГИЕ<br>ДРУЗЬЯ!</h1>
@@ -1130,19 +1154,17 @@
         </div>
     </div>
 
-    <!-- ЛОКАЦИЯ -->
     <div class="location-section" id="locationSection">
         <div class="location-bg"></div>
         <div class="location-card">
             <div class="icon-scene"><svg class="location-svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#1a1a1a"/></svg></div>
             <h2 class="location-title">МЕСТО<br>ПРОВЕДЕНИЯ</h2>
             <div class="save-the-place">Save the place!</div>
-            <p class="venue-name">Банкетное пространство «Urman house»<br>поселок Эстачи, Высокогорский район, улица Татарстан</p>
-            <a href="https://yandex.by/maps/geo/derevnya_estachi/53098626/?ll=49.364767%2C55.864468&z=15.54" target="_blank" class="btn-maps">Как добраться</a>
+            <p class="venue-name">Банкетное пространство «Urman house»<br>Республика Татарстан (Татарстан), село Высокая Гора, улица Татарстан</p>
+            <a href="https://yandex.ru/maps/org/urman_house/27550983251?si=jewhwwhnu6uey1609g3wzfwqe8" target="_blank" class="btn-maps">Как добраться</a>
         </div>
     </div>
 
-    <!-- ТАЙМИНГ -->
     <div class="timeline-screen" id="timelineScreen">
         <div class="timeline-container">
             <h2 class="timeline-main-title">Тайминг</h2>
@@ -1158,18 +1180,20 @@
         </div>
     </div>
 
-    <!-- ДРЕСС-КОД -->
     <div class="dresscode-screen" id="dresscodeScreen">
         <div class="dresscode-container">
             <h1 class="dresscode-main-title" id="dresscodeMainTitle">Дресс-код</h1>
             <p class="dresscode-description" id="dresscodeDescription">Мы не ограничиваем вас в выборе нарядов. Будем рады видеть вас в любом образе, который вам по душе. Главное — ваше настроение и желание разделить с нами этот день!</p>
-            <p class="dresscode-note" id="dresscodeNote">В белом только невеста!</p>
+            <p class="dresscode-note" id="dresscodeNote">Белый цвет мы оставим для невесты, но будем рады любым другим светлым и нежным оттенкам.</p>
         </div>
     </div>
 
-    <div class="divider-line" style="width:1px; height:60px; background:#1a1a1a; margin:0 auto; opacity:0.4;"></div>
+    <div class="wishes-block" id="wishesBlock">
+        <p>Пожалуйста, оставьте ваших малышей в надёжных руках на вечер нашего торжества, так как формат свадьбы не предполагает детской зоны и аниматоров.</p>
+    </div>
 
-    <!-- ФИНАЛЬНЫЙ БЛОК -->
+    <div class="divider-line"></div>
+
     <div class="final-block" id="finalBlock">
         <div class="pre-closing">До скорой встречи!<br>С любовью</div>
         <div class="final-names">
@@ -1182,44 +1206,44 @@
         </div>
     </div>
 
-    <!-- RSVP -->
     <div class="rsvp-screen" id="rsvpScreen">
         <div class="rsvp-container">
             <h2 class="rsvp-title">Анкета гостя</h2>
             <div class="rsvp-subtitle">Please RSVP</div>
             <div class="rsvp-deadline">Подтвердите присутствие до 15.08.2026</div>
             
-            <form id="guestForm">
+            <form id="guestForm" action="https://formspree.io/f/mgojzklz" method="POST">
+                <input type="hidden" name="_subject" value="Новый ответ на приглашение на свадьбу">
+                
                 <div class="form-group">
                     <label>Ваше имя и фамилия</label>
-                    <input type="text" id="guestName" placeholder="Например, Анна Петрова" required>
+                    <input type="text" id="guestName" name="Имя" placeholder="Например, Анна Петрова" required>
                 </div>
                 <div class="form-group">
                     <label>Будете ли Вы присутствовать?</label>
                     <div class="radio-group-vertical">
-                        <label><input type="radio" name="attendance" value="yes" required> Да, с радостью приду!</label>
-                        <label><input type="radio" name="attendance" value="no"> К сожалению, не смогу</label>
+                        <label><input type="radio" name="Присутствие" value="Да, с радостью приду!" required> Да, с радостью приду!</label>
+                        <label><input type="radio" name="Присутствие" value="К сожалению, не смогу"> К сожалению, не смогу</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Выберите напитки (можно несколько)</label>
                     <div class="checkbox-group">
-                        <label><input type="checkbox" name="drink" value="вино"> Вино</label>
-                        <label><input type="checkbox" name="drink" value="шампанское"> Шампанское</label>
-                        <label><input type="checkbox" name="drink" value="водка"> Водка</label>
-                        <label><input type="checkbox" name="drink" value="коньяк"> Коньяк</label>
-                        <label><input type="checkbox" name="drink" value="виски"> Виски</label>
-                        <label><input type="checkbox" name="drink" value="коктейль"> Коктейль</label>
-                        <label><input type="checkbox" name="drink" value="безалкогольное"> Безалкогольные</label>
+                        <label><input type="checkbox" name="Напитки" value="вино"> Вино</label>
+                        <label><input type="checkbox" name="Напитки" value="шампанское"> Шампанское</label>
+                        <label><input type="checkbox" name="Напитки" value="водка"> Водка</label>
+                        <label><input type="checkbox" name="Напитки" value="коньяк"> Коньяк</label>
+                        <label><input type="checkbox" name="Напитки" value="виски"> Виски</label>
+                        <label><input type="checkbox" name="Напитки" value="коктейль"> Коктейль</label>
+                        <label><input type="checkbox" name="Напитки" value="безалкогольное"> Безалкогольные</label>
                     </div>
                 </div>
                 <button type="submit" class="submit-btn">Отправить ответ</button>
-                <div id="formMessage" class="hidden-message">Спасибо! Ждём вас на нашей свадьбе</div>
+                <div id="formMessage" class="success-message">Спасибо! Ваш ответ отправлен. Ждём вас на нашей свадьбе!</div>
             </form>
         </div>
     </div>
 
-    <!-- КОНТАКТЫ (ТОЛЬКО НЕВЕСТА) -->
     <div class="contacts-screen" id="contactsScreen">
         <div class="contacts-container">
             <h2 class="contacts-title">Контакты</h2>
@@ -1240,7 +1264,7 @@
 
     <script>
         (function() {
-            // Первый экран — анимации
+            // Анимации для всех блоков
             const firstObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1262,7 +1286,6 @@
                 firstObserver.observe(firstScreen);
             }
 
-            // Второй экран
             const secondContainer = document.querySelector('.invitation-container');
             if (secondContainer) {
                 const secondObserver = new IntersectionObserver((entries) => {
@@ -1283,7 +1306,6 @@
                 secondObserver.observe(secondContainer);
             }
 
-            // Локация
             const locSec = document.getElementById('locationSection');
             if (locSec) {
                 const locObserver = new IntersectionObserver((entries) => {
@@ -1297,7 +1319,6 @@
                 locObserver.observe(locSec);
             }
             
-            // Тайминг
             const timeline = document.querySelector('.timeline-container');
             if (timeline) {
                 const timelineObserver = new IntersectionObserver((entries) => {
@@ -1315,7 +1336,6 @@
                 timelineObserver.observe(timeline);
             }
 
-            // Дресс-код
             const dressScreen = document.getElementById('dresscodeScreen');
             if (dressScreen) {
                 const drObs = new IntersectionObserver((entries) => {
@@ -1338,7 +1358,19 @@
                 drObs.observe(dressScreen);
             }
 
-            // Финальный блок
+            const wishesBlock = document.getElementById('wishesBlock');
+            if (wishesBlock) {
+                const wishObs = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            wishesBlock.classList.add('visible');
+                            wishObs.disconnect();
+                        }
+                    });
+                }, { threshold: 0.3 });
+                wishObs.observe(wishesBlock);
+            }
+
             const finalBlock = document.getElementById('finalBlock');
             if (finalBlock) {
                 const fbObs = new IntersectionObserver((entries) => {
@@ -1352,7 +1384,6 @@
                 fbObs.observe(finalBlock);
             }
 
-            // RSVP
             const rsvpScreen = document.getElementById('rsvpScreen');
             if (rsvpScreen) {
                 const rsvpObserver = new IntersectionObserver((entries) => {
@@ -1366,7 +1397,6 @@
                 rsvpObserver.observe(rsvpScreen);
             }
 
-            // Контакты
             const contactsScreen = document.getElementById('contactsScreen');
             if (contactsScreen) {
                 const contactsObserver = new IntersectionObserver((entries) => {
@@ -1380,30 +1410,50 @@
                 contactsObserver.observe(contactsScreen);
             }
             
-            // Скролл
             document.getElementById('scrollBtn')?.addEventListener('click', () => {
                 document.getElementById('secondScreen')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
 
-            // Форма
+            // Логика отправки формы на Formspree
             const form = document.getElementById('guestForm');
             const messageDiv = document.getElementById('formMessage');
+
             if (form) {
-                form.addEventListener('submit', function(e) {
+                form.addEventListener('submit', async function(e) {
                     e.preventDefault();
-                    const name = document.getElementById('guestName').value.trim();
-                    if (!name) {
+
+                    const nameField = document.getElementById('guestName');
+                    if (!nameField.value.trim()) {
                         alert('Пожалуйста, укажите ваше имя');
+                        nameField.focus();
                         return;
                     }
-                    messageDiv.style.display = 'block';
-                    setTimeout(() => {
-                        messageDiv.style.opacity = '1';
-                    }, 10);
-                    setTimeout(() => {
-                        messageDiv.style.display = 'none';
-                        messageDiv.style.opacity = '0';
-                    }, 4000);
+
+                    const formData = new FormData(form);
+
+                    try {
+                        const response = await fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        if (response.ok) {
+                            messageDiv.classList.add('show');
+                            form.reset();
+                            
+                            setTimeout(() => {
+                                messageDiv.classList.remove('show');
+                            }, 5000);
+                        } else {
+                            alert('Произошла ошибка при отправке. Пожалуйста, попробуйте позже или свяжитесь с нами напрямую.');
+                        }
+                    } catch (error) {
+                        console.error('Ошибка:', error);
+                        alert('Не удалось отправить форму. Проверьте подключение к интернету или попробуйте позже.');
+                    }
                 });
             }
         })();
